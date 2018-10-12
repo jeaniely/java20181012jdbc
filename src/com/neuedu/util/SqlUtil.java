@@ -25,6 +25,21 @@ public class SqlUtil {
         return conn;
     }
 
+    // 为PreparedStatement对象传入参数
+    public static void insertParamentertoPreparedStatement(PreparedStatement pstm,Object ...objs){
+        try{
+            if(objs!=null && objs.length>0){
+                for(int i=0;i<objs.length;i++){
+                    pstm.setObject(i+1,objs[i]);
+                }
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     //3:关闭-- 静态方法
     //使用可变的变量作为参数-- 可变数组
     public static void close(Object ...objs){
